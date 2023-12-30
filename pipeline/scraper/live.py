@@ -54,7 +54,7 @@ class LiveTracker:
         self.is_tracking=True
         send_topic=settings.RAW_TOPIC
         self.producer.send(send_topic,self.session_video_info.to_json())
-        self.browser=self.playwright.chromium.launch(headless=self.headless)
+        self.browser=self.playwright.firefox.launch(headless=self.headless)
         page=self.browser.new_page()
         # page.goto(f'https://www.youtube.com/live_chat?is_popout=1&v={self.session_video_info.video_id}')
         page.goto(self.video_link)
