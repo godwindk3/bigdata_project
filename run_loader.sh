@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Activate the virtualenv
-source venv/Scripts/activate
-
 # Change to the scripts directory
 cd pipeline/load
 

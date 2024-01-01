@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Activate the virtualenv
-source venv/Scripts/activate
-
 # Change to the backend directory
 cd client/backend
 
