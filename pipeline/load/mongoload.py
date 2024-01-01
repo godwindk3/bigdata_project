@@ -50,7 +50,7 @@ class MongoLoader:
 
 
     # get message in the consumer
-    def recieve_upstream(self):
+    def receive_upstream(self):
         for message in self.consumer:
             raw_message = message.value # Get the message in byte format
             yield raw_message # yield the message receive from the consumer
@@ -70,7 +70,7 @@ class MongoLoader:
     def __start_session(self):
         self.init_db() # Init and connect to the mongodb, kafka server
         self.__start_consumer() # Start the consumer topic
-        for message in self.recieve_upstream(): # Get the message from the consumer topic
+        for message in self.receive_upstream(): # Get the message from the consumer topic
             json_message = orjson.loads(message) # Parse the message from bytes into JSON
             message_type = json_message['info_type'] # get the type of message
             if message_type == 'VIDEO_STATIC_INFO': # First type: video informations => push into "info" collection
