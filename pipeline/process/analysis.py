@@ -28,7 +28,6 @@ class Analyser:
         self.consume_topic = settings.RAW_TOPIC  # Get the consumer topic's name
         self.produce_topic = settings.ANALYZED_TOPIC  # Get the producer topic's name
         self.enable_sentiment = sentiment
-        self.enable_profanity = profanity
 
     # Start the consumer topic to consume message from scraper 
     def __start_consumer(self):

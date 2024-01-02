@@ -9,7 +9,6 @@ from datetime import datetime
 # Define the types of message
 class InfoType(Enum):
     VIDEO_STATIC_INFO='VIDEO_STATIC_INFO'
-    VIDEO_LIVE_INFO='VIDEO_LIVE_INFO'
     VIDEO_LIVE_MESSAGE='VIDEO_LIVE_MESSAGE'
 
 
