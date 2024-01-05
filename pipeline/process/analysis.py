@@ -8,6 +8,7 @@ import orjson
 import logging
 import sys
 import typer
+from translate import Translator
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s',
                     handlers=[
@@ -28,6 +29,7 @@ class Analyser:
         self.consume_topic = settings.RAW_TOPIC  # Get the consumer topic's name
         self.produce_topic = settings.ANALYZED_TOPIC  # Get the producer topic's name
         self.enable_sentiment = sentiment
+        self.trans = Translator(from_lang="autodetect")
 
     # Start the consumer topic to consume message from scraper 
     def __start_consumer(self):
@@ -84,7 +86,10 @@ class Analyser:
 
         message_obj = VideoLiveMessage(**json_message) # If message is video live chat => Create message object based on the defined model.
 
-        message_obj.inferred_sentiment = self.get_sentiment(message_obj.message_content) # Get the sentiment of the message
+        origin_msg = message_obj.message_content
+        translated_msg = self.trans.translate(origin_msg)
+
+        message_obj.inferred_sentiment = self.get_sentiment(translated_msg) # Get the sentiment of the message
 
 
         logger.info(f'Completed analysis for :{message_obj}')
