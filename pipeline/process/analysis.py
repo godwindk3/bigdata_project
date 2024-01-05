@@ -29,7 +29,7 @@ class Analyser:
         self.consume_topic = settings.RAW_TOPIC  # Get the consumer topic's name
         self.produce_topic = settings.ANALYZED_TOPIC  # Get the producer topic's name
         self.enable_sentiment = sentiment
-        self.trans = Translator(from_lang="autodetect")
+        self.trans = Translator(from_lang="autodetect", to_lang="en")
 
     # Start the consumer topic to consume message from scraper 
     def __start_consumer(self):
@@ -88,6 +88,8 @@ class Analyser:
 
         origin_msg = message_obj.message_content
         translated_msg = self.trans.translate(origin_msg)
+        if (translated_msg != "PLEASE SELECT TWO DISTINCT LANGUAGES"):
+            message_obj.message_content = translated_msg
 
         message_obj.inferred_sentiment = self.get_sentiment(translated_msg) # Get the sentiment of the message
 
