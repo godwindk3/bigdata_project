@@ -5,12 +5,14 @@ from enum import Enum
 from typing import Optional
 from datetime import datetime
 
+
+# Define the types of message
 class InfoType(Enum):
     VIDEO_STATIC_INFO='VIDEO_STATIC_INFO'
-    VIDEO_LIVE_INFO='VIDEO_LIVE_INFO'
     VIDEO_LIVE_MESSAGE='VIDEO_LIVE_MESSAGE'
 
 
+# Define the sentiments of chat message
 class SentimentType(Enum):
     POSITIVE='POS'
     NEGATIVE='NEG'
@@ -27,6 +29,7 @@ class BaseDataClass:
         return orjson.dumps(asdict(self))
     
 
+# Declare model for video static info
 @dataclass
 class VideoStaticInfo(BaseDataClass):
     channel_name:str
@@ -41,6 +44,7 @@ class VideoStaticInfo(BaseDataClass):
     timestamp:float=datetime.utcnow().timestamp()
 
 
+# Declare model for chat message
 @dataclass
 class VideoLiveMessage(BaseDataClass):
     video_id:str
