@@ -1,0 +1,41 @@
+client/
+│ ├─backend/    # Backend.
+│ │ ├─app.py
+│ │ ├─example.env
+│ │ └─settings.py
+│ └─frontend/               
+│   └─chat-tracker/     # Frontend.
+│     ├─.gitignore
+│     ├─index.html
+│     ├─node_modules/
+│     ├─package-lock.json
+│     ├─package.json
+│     ├─postcss.config.js
+│     ├─public/
+│     ├─src/ 
+│     ├─tailwind.config.js
+│     └─vite.config.js
+│
+├─init.bat # Script để chạy project trên window.
+├─init.sh # Script để chạy project trên ubuntu.
+├─pipeline/
+│ ├─load/   # Đẩy dữ liệu lên mongoDB.
+│ │ ├─example.env
+│ │ ├─mongoload.py
+│ │ ├─settings.py
+│ │ └─__init__.py
+│ ├─process/    # Dịch và phân tích cảm xúc của live chat.
+│ │ ├─analysis.py
+│ │ ├─example.env
+│ │ ├─models.py
+│ │ └─settings.py
+│ └─scraper/    # Cào dữ liệu từ youtube.
+│   ├─exceptions.py
+│   ├─live.py
+│   ├─example.env
+│   ├─models.py
+│   └─settings.py
+├─README.md
+├─requirements.txt
+├─*.bat
+└─*.sh
