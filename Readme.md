@@ -1,2 +1,2 @@
 # bigdata_project
-Twitter streaming
+live chat streaming
